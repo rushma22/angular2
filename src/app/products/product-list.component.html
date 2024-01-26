@@ -7,9 +7,22 @@
 </head>
 <body>
   {{pageHeader}}
+  <br><br>
+  <button 
+  [style.padding.px]="buttonPadding"
+  [style.background-color]="colour"
+   (click)="toggleImage()">{{showImage ? 'Hide' : 'Show'}} Images</button> <br> <br>
+<label for="">Search  </label>
+  <input type="text"
+  [(ngModel)] = 'listFilter'
+  >
+
+  <h3>Filter By: {{listFilter}}</h3>
+
   <table *ngIf = 'products.length'>
     <thead>
       <tr>
+        <th>Product Image</th>
         <th>Product Name</th>
         <th>Quantity</th>
       </tr>
@@ -17,7 +30,13 @@
     <tbody> 
 
       <tr *ngFor='let product of products'>
-        
+        <td>
+          <img *ngIf = 'showImage'
+          [src]='product.imgUrl'
+          [style.width.px]='imageWidth'
+          [style.margin.px]='imageMargin'
+          >
+        </td>
         <td>{{product.productName}}</td>
         <td>{{product.quantity}}</td>
       </tr>
