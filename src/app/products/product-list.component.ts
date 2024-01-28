@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { IProduct } from "./product";
 
 @Component({
@@ -8,13 +8,11 @@ import { IProduct } from "./product";
  
 })
 
-export class ProductListComponent {
+export class ProductListComponent  implements OnInit{
     pageHeader: string = "Product List";
     imageMargin: number = 2;
     imageWidth: number = 50;
     showImage: boolean = false;
-    buttonPadding: number = 10;
-    colour: string = "orange";
 
     private _listFilter = "";
 
@@ -33,26 +31,30 @@ export class ProductListComponent {
             "productName": "Hammer",
             "quantity": 20,
             "imgUrl": "assets/hammer.jpg",
-            "price": 15
+            "price": 15,
+            "rating":4
             
         },
         {
             "productName": "Spanner",
             "quantity": 32,
             "imgUrl": "assets/spanner.jpg",
-            "price": 10
+            "price": 10,
+            "rating":2
         },
         {
             "productName": "Nails",
             "quantity": 45,
             "imgUrl": "assets/nails.jpg",
-            "price": 5
+            "price": 5,
+            "rating":3
         },
         {
             "productName": "Saw",
             "quantity": 10,
             "imgUrl": "assets/saw.jpeg",
-            "price": 25
+            "price": 25,
+            "rating":5
         }
        
     ];
@@ -65,7 +67,15 @@ export class ProductListComponent {
             product.productName.toLocaleLowerCase().includes(filterBy));
     }
 
+    ngOnInit(): void {
+        console.log("working")
+    }
+
     toggleImage(): void{
         this.showImage = !this.showImage;
+    }
+
+    onRatingClicked(message: string): void {
+        this.pageHeader = 'Product List: ' + message;
     }
 }

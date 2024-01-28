@@ -7,27 +7,39 @@
   <title>Document</title>
 </head>
 
-<body>
+<body class="container">
   {{pageHeader}}
   <br><br>
-  <button [style.padding.px]="buttonPadding" [style.background-color]="colour" (click)="toggleImage()">{{showImage ?
-    'Hide' : 'Show'}} Images</button> <br> <br>
-  <label for="">Search </label>
-  <input type="text" [(ngModel)]='listFilter'>
+
+  <button (click)="toggleImage()" class="btn btn-warning">{{showImage ?
+    'Hide' : 'Show'}} Images</button> <br><br>
+
+    <div class="row">
+      <div class="col-3">
+        <div class="input-group input-group-sm mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-sm">Search</span>
+          <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" [(ngModel)]='listFilter'>
+        </div>
+      </div>
+    </div>
+
+   
+    
 
   <h3>Filter By: {{listFilter}}</h3>
 
-  <table *ngIf='products.length'>
+
+  <table class="table" *ngIf='products.length'>
     <thead>
       <tr>
         <th>Product Image</th>
         <th>Product Name</th>
         <th>Quantity</th>
         <th>Price</th>
+        <th>Rating</th>
       </tr>
     </thead>
     <tbody>
-
       <tr *ngFor='let product of filteredProducts'>
         <td>
           <img *ngIf='showImage' [src]='product.imgUrl' [style.width.px]='imageWidth' [style.margin.px]='imageMargin'>
@@ -35,9 +47,14 @@
         <td>{{product.productName}}</td>
         <td>{{product.quantity | convertToSpaces}}</td>
         <td>{{product.price | currency}}</td>
+        <td><app-star [rating]='product.rating' 
+                      (ratingClicked) = 'onRatingClicked($event)'>
+                    </app-star></td>
       </tr>
     </tbody>
   </table>
+
+
 </body>
 
 </html>
