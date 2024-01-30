@@ -1,5 +1,6 @@
 [
     {
+        "productId": 1,
         "productName": "Hammer",
         "quantity": 20,
         "imgUrl": "assets/hammer.jpg",
@@ -8,6 +9,7 @@
         
     },
     {
+        "productId": 2,
         "productName": "Spanner",
         "quantity": 32,
         "imgUrl": "assets/spanner.jpg",
@@ -15,6 +17,7 @@
         "rating":2
     },
     {
+        "productId": 3,
         "productName": "Nails",
         "quantity": 45,
         "imgUrl": "assets/nails.jpg",
@@ -22,6 +25,7 @@
         "rating":3
     },
     {
+        "productId": 4,
         "productName": "Saw",
         "quantity": 10,
         "imgUrl": "assets/saw.jpeg",
